@@ -108,3 +108,6 @@ console.log(addressBookArray);
 let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
 addressBookArray.slice(index, 1);
 console.log(addressBookArray);
+
+let count = addressBookArray.length;
+console.log(count);
