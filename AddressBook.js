@@ -98,7 +98,6 @@ class Contact {
 let addressBookArray = new Array();
 let contact = new Contact("Swathi", "Hebbar", "Navunda", "Udupi", "Karnataka", 567567, 9988776655, "swathi@gmail.com");
 let contact1 = new Contact("Swath", "Hebbar", "Navunda", "Udupi", "Karnataka", 567567, 9988776655, "swathi@gmail.com");
-// addressBookArray.push(contact);
 
 function addContact(contact) {
     let isContactExist = addressBookArray.filter(c => c.firstName === contact.firstName);
@@ -109,29 +108,21 @@ function addContact(contact) {
     }
 }
 
-// {
-//     let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-//     addressBookArray[index].phoneNumber = 8877665544;
-//     console.log(addressBookArray);
-// }
+try{
+    addContact(contact);
+    addContact(contact1);
+    {
+        let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
+        addressBookArray[index].phoneNumber = 8877665544;
+        console.log(addressBookArray);
+    }
+    
+    let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
+    addressBookArray.slice(index, 1);
+    console.log(addressBookArray);
+} catch (e) {
+    console.error(e);
+}
 
-// let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-// addressBookArray.slice(index, 1);
-// console.log(addressBookArray);
-
-// let count = addressBookArray.length;
-// console.log(count);
-
-// let isContactExist = addressBookArray.filter(contact => contact.firstName === "Swathi");
-// if (isContactExist.length == 0) {
-//     let contact1 = new Contact("Swath", "Hebbar", "Navunda", "Udupi", "Karnataka", 567567, 9988776655, "swathi@gmail.com");
-//     addressBookArray.push(contact1);
-// } else {
-//     console.log("Contact already exists");
-// }
-
-
-
-addContact(contact);
-addContact(contact1);
-
+let count = addressBookArray.length;
+console.log(count);
