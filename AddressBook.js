@@ -121,9 +121,12 @@ try{
     let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
     let deletedContact = addressBookArray.slice(index, 1);
     console.log("Deleted contact:\n" + deletedContact);
+
+    let count = addressBookArray.reduce((totalCount, contact) => {
+        return totalCount += 1;
+    }, 0);
+    console.log("Total contacts count: ", count)
 } catch (e) {
     console.error(e);
 }
 
-let count = addressBookArray.length;
-console.log(count);
