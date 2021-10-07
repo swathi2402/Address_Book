@@ -111,15 +111,16 @@ function addContact(contact) {
 try{
     addContact(contact);
     addContact(contact1);
+    console.log("Address Book:\n" + addressBookArray);
     {
         let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
         addressBookArray[index].phoneNumber = 8877665544;
-        console.log(addressBookArray);
+        console.log("Edited contact:\n" + addressBookArray[index]);
     }
     
     let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-    addressBookArray.slice(index, 1);
-    console.log(addressBookArray);
+    let deletedContact = addressBookArray.slice(index, 1);
+    console.log("Deleted contact:\n" + deletedContact);
 } catch (e) {
     console.error(e);
 }
