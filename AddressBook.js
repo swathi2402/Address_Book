@@ -112,15 +112,15 @@ try{
     addContact(contact);
     addContact(contact1);
     console.log("Address Book:\n" + addressBookArray);
-    // {
-    //     let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-    //     addressBookArray[index].phoneNumber = 8877665544;
-    //     console.log("Edited contact:\n" + addressBookArray[index]);
-    // }
+    {
+        let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
+        addressBookArray[index].phoneNumber = 8877665544;
+        console.log("Edited contact:\n" + addressBookArray[index]);
+    }
     
-    // let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-    // let deletedContact = addressBookArray.slice(index, 1);
-    // console.log("Deleted contact:\n" + deletedContact);
+    let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
+    let deletedContact = addressBookArray.slice(index, 1);
+    console.log("Deleted contact:\n" + deletedContact);
 
     let count = addressBookArray.reduce((totalCount, contact) => {
         return totalCount += 1;
@@ -137,15 +137,31 @@ try{
     }
 
     // UC 9
+    {
+        let city = 'Udupi';
+        console.log("Contacts in city " + city);
+        addressBookArray.filter(contact => contact.city == city)
+                        .forEach(contact => console.log(contact));
+
+        let state = 'Karnataka';
+        console.log("Contacts in state " + state);
+        addressBookArray.filter(contact => contact.state == state)
+                        .forEach(contact => console.log(contact));
+    }
+    // UC 9
     let city = 'Udupi';
-    console.log("Contacts in city " + city);
-    addressBookArray.filter(contact => contact.city == city)
-                    .forEach(contact => console.log(contact));
+    let personCountInCity = addressBookArray.filter(contact => contact.city == city)
+                                            .reduce((totalCount, contact) => {
+                                                return totalCount += 1;
+                                            }, 0);
+    console.log("count of contacts in city " + city + " is: " + personCountInCity);
 
     let state = 'Karnataka';
-    console.log("Contacts in state " + state);
-    addressBookArray.filter(contact => contact.state == state)
-                    .forEach(contact => console.log(contact));
+    let personCountInState = addressBookArray.filter(contact => contact.state == state)
+                    .reduce((totalCount, contact) => {
+                        return totalCount += 1;
+                    }, 0);
+    console.log("Count of contacts in state " + state + " is: " + personCountInState);
 } catch (e) {   
     console.error(e);
 }
