@@ -97,7 +97,7 @@ class Contact {
 }
 let addressBookArray = new Array();
 let contact = new Contact("Swathi", "Hebbar", "Navunda", "Udupi", "Karnataka", 567567, 9988776655, "swathi@gmail.com");
-let contact1 = new Contact("Swath", "Hebbar", "Navunda", "Udupi", "Karnataka", 567567, 9988776655, "swathi@gmail.com");
+let contact1 = new Contact("Swath", "Hebbar", "Navunda", "Udupi", "Karnatak", 567567, 9998887766, "swathi@gmail.com");
 
 function addContact(contact) {
     let isContactExist = addressBookArray.filter(c => c.firstName === contact.firstName);
@@ -112,15 +112,15 @@ try{
     addContact(contact);
     addContact(contact1);
     console.log("Address Book:\n" + addressBookArray);
-    {
-        let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-        addressBookArray[index].phoneNumber = 8877665544;
-        console.log("Edited contact:\n" + addressBookArray[index]);
-    }
+    // {
+    //     let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
+    //     addressBookArray[index].phoneNumber = 8877665544;
+    //     console.log("Edited contact:\n" + addressBookArray[index]);
+    // }
     
-    let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
-    let deletedContact = addressBookArray.slice(index, 1);
-    console.log("Deleted contact:\n" + deletedContact);
+    // let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
+    // let deletedContact = addressBookArray.slice(index, 1);
+    // console.log("Deleted contact:\n" + deletedContact);
 
     let count = addressBookArray.reduce((totalCount, contact) => {
         return totalCount += 1;
@@ -128,10 +128,23 @@ try{
     console.log("Total contacts count: ", count)
 
     // UC 8
+    {
+        let city = 'Udupi';
+        let personToSearch = 'Swath';
+        addressBookArray.filter(contact => contact.city == city)
+                        .filter(contact => contact.firstName == personToSearch)
+                        .forEach(contact => console.log(contact));
+    }
+
+    // UC 9
     let city = 'Udupi';
-    let personToSearch = 'Swath';
+    console.log("Contacts in city " + city);
     addressBookArray.filter(contact => contact.city == city)
-                    .filter(contact => contact.firstName == personToSearch)
+                    .forEach(contact => console.log(contact));
+
+    let state = 'Karnataka';
+    console.log("Contacts in state " + state);
+    addressBookArray.filter(contact => contact.state == state)
                     .forEach(contact => console.log(contact));
 } catch (e) {   
     console.error(e);
