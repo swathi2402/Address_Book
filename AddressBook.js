@@ -97,7 +97,9 @@ class Contact {
 }
 let addressBookArray = new Array();
 let contact = new Contact("Swathi", "Hebbar", "Navunda", "Udupi", "Karnataka", 567567, 9988776655, "swathi@gmail.com");
-let contact1 = new Contact("Swath", "Hebbar", "Navunda", "Udupi", "Karnatak", 567567, 9998887766, "swathi@gmail.com");
+let contact1 = new Contact("Swath", "Hebbar", "Navunda", "Udupi", "Karnatak", 567567, 9998887766, "swath@gmail.com");
+let contact2 = new Contact("Roopa", "Rao", "Abcd", "Madurai", "Tamilnadu", 543543, 8877669900, "roopa@gmail.com.co");
+
 
 function addContact(contact) {
     let isContactExist = addressBookArray.filter(c => c.firstName === contact.firstName);
@@ -111,6 +113,7 @@ function addContact(contact) {
 try{
     addContact(contact);
     addContact(contact1);
+    addContact(contact2);
     console.log("Address Book:\n" + addressBookArray);
     {
         let index = addressBookArray.findIndex(contact => contact.firstName === "Swathi");
@@ -148,7 +151,7 @@ try{
         addressBookArray.filter(contact => contact.state == state)
                         .forEach(contact => console.log(contact));
     }
-    // UC 9
+    // UC 10
     let city = 'Udupi';
     let personCountInCity = addressBookArray.filter(contact => contact.city == city)
                                             .reduce((totalCount, contact) => {
@@ -158,10 +161,16 @@ try{
 
     let state = 'Karnataka';
     let personCountInState = addressBookArray.filter(contact => contact.state == state)
-                    .reduce((totalCount, contact) => {
-                        return totalCount += 1;
-                    }, 0);
+                                            .reduce((totalCount, contact) => {
+                                                return totalCount += 1;
+                                            }, 0);
     console.log("Count of contacts in state " + state + " is: " + personCountInState);
+
+    // UC 11
+    addressBookArray.sort((contact1, contact2) => {
+                        return contact1.firstName.localeCompare(contact2.firstName);
+                    })
+                    .forEach(contact => console.log(contact));               
 } catch (e) {   
     console.error(e);
 }
